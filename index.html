@@ -1,39 +1,584 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Air Conditioners | Arctura — Engineered Cooling</title>
+<meta name="description" content="Shop split, window and portable air conditioners at Arctura. Compare tonnage, star ratings and EMI options. Free installation on select models.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Bootstrap 5.3 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<a href="https://www.flipkart.com/cropped-men-checkered-casual-white-blue-shirt/p/itm3129530d37e1f?affid=lehlahstylefl&affExtParam1=-sUK81Bm7SclQvYuC8l9-WRKMAwQvrZTS3vjYVK18Bo&gad_source=1&gad_campaignid=23929921819&gbraid=0AAAABDzqMm4aaw5jljbvmUnzOV1BE4dPb&gclid=CjwKCAjw0o3SBhBVEiwAh28-jZWtxCs8cqaTaDCtU-SyEt93aC4ZpmcRYQ6A6bK2mVVVHna68qkBahoC9-oQAvD_BwE">flipkart</a>
-<a href="hello 5">hello 5</a>
-
-<div class="my class">
-    <h1>hello 1</h1>
-    <p>A paragraph is a self-contained unit of discourse in writing that deals with a particular point or idea. It typically consists of a group of sentences—or sometimes a single sentence—beginning on a new line, and serves as a building block to organize extended segments of prose</p>
-</div>
-           
-<div class="my class">
-    <h1>hello 2</h1>
-    <p>A paragraph is a self-contained unit of discourse in writing that deals with a particular point or idea. It typically consists of a group of sentences—or sometimes a single sentence—beginning on a new line, and serves as a building block to organize extended segments of prose</p>
-</div>
- 
-<div class="my class">
-    <h1>hello 3</h1>
-    <p>A paragraph is a sel-contained unit of discourse in writing that deals with a particular point or idea. It typically consists of a group of sentences—or sometimes a single sentence—beginning on a new line, and serves as a building block to organize extended segments of prose</p>
+<!-- Loading Screen -->
+<div id="loadScreen" class="load-screen">
+  <div class="dial-loader">
+    <svg viewBox="0 0 100 100">
+      <circle class="dial-track" cx="50" cy="50" r="42"></circle>
+      <circle class="dial-fill" cx="50" cy="50" r="42"></circle>
+    </svg>
+    <span class="dial-loader-label">ARCTURA</span>
+  </div>
 </div>
 
-<div id="hello 4">
-    <h1>hello 4</h1>
-    <p>A paragraph is a self-contained unit of discourse in writing that deals with a particular point or idea. It typically consists of a group of sentences—or sometimes a single sentence—beginning on a new line, and serves as a building block to organize extended segments of prose</p>
+<!-- Scroll progress -->
+<div class="scroll-progress"><div id="scrollBar" class="scroll-progress-bar"></div></div>
+
+<!-- Top Info Bar -->
+<div class="topbar d-none d-md-block">
+  <div class="container d-flex justify-content-between align-items-center py-1">
+    <div class="topbar-msg">
+      <i class="bi bi-truck"></i> Free installation across Tamil Nadu &nbsp;•&nbsp; <i class="bi bi-shield-check"></i> 1‑Year Comprehensive Warranty
+    </div>
+    <div class="d-flex gap-3 topbar-links">
+      <a href="#" class="text-decoration-none">Track Order</a>
+      <a href="#" class="text-decoration-none">Store Locator</a>
+      <a href="#" class="text-decoration-none">Help</a>
+    </div>
+  </div>
 </div>
 
-<div id="hello 5">
-     <h1>hello 5</h1>
-     <p>A paragraph is a self-contained unit of discourse in writing that deals with a particular point or idea. It typically consists of a group of sentences—or sometimes a single sentence—beginning on a new line, and serves as a building block to organize extended segments of prose</p>
+<!-- Header / Sticky Nav -->
+<header id="mainHeader" class="main-header">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between py-3 gap-3">
+      <a href="#" class="brand">
+        <span class="brand-mark"><i class="bi bi-snow2"></i></span>
+        <span class="brand-word">ARCTURA</span>
+      </a>
+
+      <form class="search-form d-none d-lg-flex flex-grow-1" role="search">
+        <span class="search-icon"><i class="bi bi-search"></i></span>
+        <input type="search" class="search-input" placeholder="Search 1.5 ton split AC, inverter AC, window AC…" aria-label="Search products">
+        <button type="submit" class="btn search-btn">Search</button>
+      </form>
+
+      <div class="d-flex align-items-center gap-3 header-icons">
+        <button class="icon-btn d-none d-md-inline-flex" aria-label="Compare">
+          <i class="bi bi-arrow-left-right"></i><span class="icon-badge" id="compareCount">0</span>
+        </button>
+        <button class="icon-btn" aria-label="Wishlist">
+          <i class="bi bi-heart"></i><span class="icon-badge" id="wishCount">0</span>
+        </button>
+        <button class="icon-btn" aria-label="Cart" data-bs-toggle="offcanvas" data-bs-target="#cartCanvas">
+          <i class="bi bi-bag"></i><span class="icon-badge" id="cartCount">0</span>
+        </button>
+        <button class="icon-btn d-lg-none" aria-label="Menu" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category nav -->
+  <nav class="category-nav d-none d-lg-block">
+    <div class="container">
+      <ul class="cat-list">
+        <li class="dropdown-hover">
+          <a href="#products"><i class="bi bi-snow2 me-1"></i>Air Conditioners <i class="bi bi-chevron-down small"></i></a>
+          <div class="mega-menu">
+            <div class="row g-4">
+              <div class="col-3">
+                <h6>By Type</h6>
+                <a href="#" data-filter="type" data-value="split">Split AC</a>
+                <a href="#" data-filter="type" data-value="window">Window AC</a>
+                <a href="#" data-filter="type" data-value="portable">Portable AC</a>
+                <a href="#" data-filter="type" data-value="cassette">Cassette AC</a>
+              </div>
+              <div class="col-3">
+                <h6>By Capacity</h6>
+                <a href="#" data-filter="cap" data-value="1.0">1.0 Ton</a>
+                <a href="#" data-filter="cap" data-value="1.5">1.5 Ton</a>
+                <a href="#" data-filter="cap" data-value="2.0">2.0 Ton</a>
+              </div>
+              <div class="col-3">
+                <h6>By Star Rating</h6>
+                <a href="#" data-filter="star" data-value="5">5 Star</a>
+                <a href="#" data-filter="star" data-value="4">4 Star</a>
+                <a href="#" data-filter="star" data-value="3">3 Star</a>
+              </div>
+              <div class="col-3 mega-promo">
+                <p class="eyebrow">Season Pick</p>
+                <p class="mega-promo-title">Inverter range, up to 40% off</p>
+                <a href="#products" class="btn btn-sm btn-frost">Shop now</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="#">Refrigerators</a></li>
+        <li><a href="#">Washing Machines</a></li>
+        <li><a href="#">Televisions</a></li>
+        <li><a href="#">Kitchen Appliances</a></li>
+        <li><a href="#" class="text-deal"><i class="bi bi-lightning-charge-fill"></i> Deals</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile Offcanvas Menu -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
+  <div class="offcanvas-header">
+    <span class="brand-word">ARCTURA</span>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form class="search-form mb-4" role="search">
+      <span class="search-icon"><i class="bi bi-search"></i></span>
+      <input type="search" class="search-input" placeholder="Search products…">
+    </form>
+    <div class="accordion" id="mobileAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#mCat1">Air Conditioners</button>
+        </h2>
+        <div id="mCat1" class="accordion-collapse collapse show" data-bs-parent="#mobileAccordion">
+          <div class="accordion-body d-flex flex-column gap-2">
+            <a href="#products">Split AC</a><a href="#products">Window AC</a><a href="#products">Portable AC</a>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mCat2">Refrigerators</button></h2>
+        <div id="mCat2" class="accordion-collapse collapse" data-bs-parent="#mobileAccordion"><div class="accordion-body">Single door, double door, side-by-side.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mCat3">Washing Machines</button></h2>
+        <div id="mCat3" class="accordion-collapse collapse" data-bs-parent="#mobileAccordion"><div class="accordion-body">Front load, top load, semi-automatic.</div></div>
+      </div>
+    </div>
+  </div>
 </div>
 
+<!-- Cart Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="cartCanvas">
+  <div class="offcanvas-header">
+    <h5 class="mb-0">Your Bag</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column">
+    <div id="cartItems" class="flex-grow-1 d-flex flex-column gap-3">
+      <p class="text-muted small">Your bag is empty. Add a product to see it here.</p>
+    </div>
+    <div class="border-top pt-3 mt-3">
+      <div class="d-flex justify-content-between mb-2"><span>Subtotal</span><strong id="cartSubtotal">₹0</strong></div>
+      <button class="btn btn-frost w-100">Proceed to Checkout</button>
+    </div>
+  </div>
+</div>
+
+<!-- Breadcrumb -->
+<div class="container">
+  <nav aria-label="breadcrumb" class="pt-3">
+    <ol class="breadcrumb small">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Appliances</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Air Conditioners</li>
+    </ol>
+  </nav>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="row align-items-center gy-4">
+      <div class="col-lg-6">
+        <p class="eyebrow"><i class="bi bi-snow2"></i> Cooling Season 2026</p>
+        <h1 class="hero-title">Room temperature,<br> <span>redrawn.</span></h1>
+        <p class="hero-sub">Inverter split ACs that hold a set point within half a degree, cut power draw by up to 65%, and quiet down to a 38dB whisper at night.</p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="#products" class="btn btn-frost btn-lg">Shop Air Conditioners</a>
+          <a href="#compareTable" class="btn btn-outline-frost btn-lg">Compare tonnage guide</a>
+        </div>
+        <div class="hero-stats row mt-5 g-3">
+          <div class="col-4"><div class="stat-num" data-count="65">0</div><div class="stat-label">% less power draw</div></div>
+          <div class="col-4"><div class="stat-num" data-count="38">0</div><div class="stat-label">dB min. noise</div></div>
+          <div class="col-4"><div class="stat-num" data-count="120">0</div><div class="stat-label">models in stock</div></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="dial-hero">
+          <svg viewBox="0 0 300 300" class="temp-dial">
+            <circle cx="150" cy="150" r="120" class="td-track"></circle>
+            <circle cx="150" cy="150" r="120" class="td-fill" id="heroDial"></circle>
+            <text x="150" y="140" text-anchor="middle" class="td-temp">24°</text>
+            <text x="150" y="168" text-anchor="middle" class="td-label">TARGET TEMP</text>
+          </svg>
+          <div class="dial-chip dial-chip-1"><i class="bi bi-lightning-charge-fill"></i> 5 Star Inverter</div>
+          <div class="dial-chip dial-chip-2"><i class="bi bi-volume-mute"></i> 38 dB Silent</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Promo strip -->
+<section class="promo-strip">
+  <div class="container">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="promo-card promo-card--a">
+          <p class="eyebrow">Exchange offer</p>
+          <h5>Up to ₹4,000 off on your old AC</h5>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="promo-card promo-card--b">
+          <p class="eyebrow">No cost EMI</p>
+          <h5>Starting ₹1,499 / month</h5>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="promo-card promo-card--c">
+          <p class="eyebrow">Installation</p>
+          <h5>Free standard install, all brands</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section id="products" class="products-section">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Filter Sidebar -->
+      <aside class="col-lg-3">
+        <div class="filter-panel">
+          <div class="filter-panel-head">
+            <span><i class="bi bi-sliders2"></i> Filters</span>
+            <button class="btn btn-link btn-sm p-0" id="clearFilters">Clear all</button>
+          </div>
+
+          <div class="filter-group">
+            <p class="filter-title">Price range</p>
+            <input type="range" class="form-range" min="18000" max="70000" step="1000" id="priceRange" value="70000">
+            <div class="d-flex justify-content-between small text-muted">
+              <span>₹18,000</span><span id="priceVal">₹70,000</span>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <p class="filter-title">Type</p>
+            <div class="form-check"><input class="form-check-input filter-check" type="checkbox" value="split" id="fType1" data-filter="type"><label class="form-check-label" for="fType1">Split AC</label></div>
+            <div class="form-check"><input class="form-check-input filter-check" type="checkbox" value="window" id="fType2" data-filter="type"><label class="form-check-label" for="fType2">Window AC</label></div>
+            <div class="form-check"><input class="form-check-input filter-check" type="checkbox" value="portable" id="fType3" data-filter="type"><label class="form-check-label" for="fType3">Portable AC</label></div>
+          </div>
+
+          <div class="filter-group">
+            <p class="filter-title">Capacity</p>
+            <div class="form-check"><input class="form-check-input filter-check" type="checkbox" value="1.0" id="fCap1" data-filter="cap"><label class="form-check-label" for="fCap1">1.0 Ton</label></div>
+            <div class="form-check"><input class="form-check-input filter-check" type="checkbox" value="1.5" id="fCap2" data-filter="cap"><label class="form-check-label" for="fCap2">1.5 Ton</label></div>
+            <div class="form-check"><input class="form-check-input filter-check" type="checkbox" value="2.0" id="fCap3" data-filter="cap"><label class="form-check-label" for="fCap3">2.0 Ton</label></div>
+          </div>
+
+          <div class="filter-group">
+            <p class="filter-title">Star rating</p>
+            <div class="form-check"><input class="form-check-input filter-check" type="checkbox" value="5" id="fStar1" data-filter="star"><label class="form-check-label" for="fStar1">5 Star</label></div>
+            <div class="form-check"><input class="form-check-input filter-check" type="checkbox" value="4" id="fStar2" data-filter="star"><label class="form-check-label" for="fStar2">4 Star</label></div>
+            <div class="form-check"><input class="form-check-input filter-check" type="checkbox" value="3" id="fStar3" data-filter="star"><label class="form-check-label" for="fStar3">3 Star</label></div>
+          </div>
+
+          <div class="filter-group">
+            <p class="filter-title">Brand</p>
+            <div class="form-check"><input class="form-check-input filter-check" type="checkbox" value="Nordair" id="fBr1" data-filter="brand"><label class="form-check-label" for="fBr1">Nordair</label></div>
+            <div class="form-check"><input class="form-check-input filter-check" type="checkbox" value="Polara" id="fBr2" data-filter="brand"><label class="form-check-label" for="fBr2">Polara</label></div>
+            <div class="form-check"><input class="form-check-input filter-check" type="checkbox" value="Vortix" id="fBr3" data-filter="brand"><label class="form-check-label" for="fBr3">Vortix</label></div>
+            <div class="form-check"><input class="form-check-input filter-check" type="checkbox" value="Glaciera" id="fBr4" data-filter="brand"><label class="form-check-label" for="fBr4">Glaciera</label></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Product Grid -->
+      <div class="col-lg-9">
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+          <div>
+            <h2 class="section-title mb-0">Air Conditioners</h2>
+            <p class="text-muted small mb-0"><span id="resultCount">12</span> results</p>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-outline-frost btn-sm d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#filterCanvasMobile"><i class="bi bi-sliders2"></i> Filters</button>
+            <label for="sortSelect" class="small text-muted mb-0 d-none d-sm-inline">Sort by</label>
+            <select class="form-select form-select-sm sort-select" id="sortSelect">
+              <option value="popular">Popularity</option>
+              <option value="low">Price: Low to High</option>
+              <option value="high">Price: High to Low</option>
+              <option value="rating">Customer Rating</option>
+              <option value="discount">Discount</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Skeleton loader -->
+        <div id="skeletonGrid" class="row g-4">
+          <!-- injected by JS -->
+        </div>
+
+        <!-- Product grid -->
+        <div id="productGrid" class="row g-4 d-none"></div>
+
+        <nav aria-label="Product pagination" class="mt-5">
+          <ul class="pagination justify-content-center" id="pagination">
+            <li class="page-item disabled"><a class="page-link" href="#"><i class="bi bi-chevron-left"></i></a></li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mobile filter offcanvas -->
+<div class="offcanvas offcanvas-bottom filter-offcanvas" tabindex="-1" id="filterCanvasMobile">
+  <div class="offcanvas-header">
+    <h5>Filters</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p class="text-muted small">Use the filter panel on desktop, or scroll the page — filters sync automatically.</p>
+    <button class="btn btn-frost w-100" data-bs-dismiss="offcanvas">Show results</button>
+  </div>
+</div>
+
+<!-- Tonnage compare guide -->
+<section id="compareTable" class="compare-section">
+  <div class="container">
+    <h2 class="section-title text-center">Which tonnage fits your room?</h2>
+    <p class="section-sub text-center">A quick reference, not a sales pitch — pick the row that matches your room size.</p>
+    <div class="table-responsive mt-4">
+      <table class="table compare-tbl align-middle">
+        <thead>
+          <tr><th>Room size</th><th>Recommended tonnage</th><th>Typical wattage</th><th>Best for</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Up to 120 sq ft</td><td>1.0 Ton</td><td>~1000W</td><td>Small bedroom, home office</td></tr>
+          <tr><td>120–180 sq ft</td><td>1.5 Ton</td><td>~1500W</td><td>Standard bedroom, living room</td></tr>
+          <tr><td>180–250 sq ft</td><td>2.0 Ton</td><td>~2000W</td><td>Large living room, master bedroom</td></tr>
+          <tr><td>250+ sq ft</td><td>2.0 Ton (multi-unit)</td><td>2000W+</td><td>Open-plan spaces</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Why choose us -->
+<section class="why-section">
+  <div class="container">
+    <h2 class="section-title text-center">Why shop with Arctura</h2>
+    <div class="row g-4 mt-2">
+      <div class="col-6 col-lg-3">
+        <div class="why-card">
+          <i class="bi bi-tools"></i>
+          <h6>Certified installers</h6>
+          <p>Every install is done by brand-trained technicians, not third-party contractors.</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="why-card">
+          <i class="bi bi-arrow-repeat"></i>
+          <h6>10-day replacement</h6>
+          <p>Doorstep swap if a unit arrives faulty — no questions, no repair queue.</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="why-card">
+          <i class="bi bi-headset"></i>
+          <h6>Real support</h6>
+          <p>A technician on call for the life of your warranty, not just at checkout.</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="why-card">
+          <i class="bi bi-cash-coin"></i>
+          <h6>Transparent EMI</h6>
+          <p>No processing fee, no hidden markup — the price shown is the price paid.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Brands -->
+<section class="brands-section">
+  <div class="container">
+    <p class="eyebrow text-center">Brands we carry</p>
+    <div class="brand-row">
+      <span>NORDAIR</span><span>POLARA</span><span>VORTIX</span><span>GLACIERA</span><span>KELVINOX</span><span>ARIONE</span>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="reviews-section">
+  <div class="container">
+    <h2 class="section-title text-center">What customers say</h2>
+    <div id="reviewCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="review-card mx-auto">
+            <div class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p>"Installed within two days of ordering. The technician recalibrated the outdoor unit mounting himself — didn't expect that level of care."</p>
+            <p class="review-name">— Priyanka R., Chennai</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="review-card mx-auto">
+            <div class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></div>
+            <p>"Compared four 1.5 ton models side by side on the site before buying. The EMI breakdown upfront made the decision easy."</p>
+            <p class="review-name">— Arun K., Madurai</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="review-card mx-auto">
+            <div class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p>"Old unit picked up for exchange same day as the new one was installed. Zero downtime through peak summer."</p>
+            <p class="review-name">— Divya S., Coimbatore</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev"><span class="cust-arrow"><i class="bi bi-chevron-left"></i></span></button>
+      <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next"><span class="cust-arrow"><i class="bi bi-chevron-right"></i></span></button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <h2 class="section-title text-center">Frequently asked questions</h2>
+    <div class="accordion faq-accordion mt-4 mx-auto" id="faqAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq1">How long does installation take?</button></h2>
+        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion"><div class="accordion-body">Most standard installations are completed within 60–90 minutes once the technician arrives, typically within 24–48 hours of delivery.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq2">What does the warranty cover?</button></h2>
+        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Compressor and condenser coils are covered for the full manufacturer term; general parts and labour are covered for the first year.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq3">Can I exchange my old AC?</button></h2>
+        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Yes — enter your old unit's details at checkout for an instant exchange quote, deducted directly from your order.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq4">Is no-cost EMI really no cost?</button></h2>
+        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Yes, for eligible cards. The discount you'd get for paying in full is applied upfront, so the EMI total matches the sticker price.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-box">
+      <div>
+        <h3>Get season alerts, not spam</h3>
+        <p class="mb-0">Price drops on shortlisted models and early access to exchange offers. One email a week, max.</p>
+      </div>
+      <form id="newsletterForm" class="newsletter-form" novalidate>
+        <input type="email" id="newsletterEmail" class="form-control" placeholder="you@email.com" required>
+        <button type="submit" class="btn btn-frost">Subscribe</button>
+      </form>
+    </div>
+    <div id="newsletterMsg" class="small mt-2"></div>
+  </div>
+</section>
+
+<!-- Contact + Map -->
+<section class="contact-section">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <h2 class="section-title">Visit a store</h2>
+        <p class="text-muted">Talk tonnage and placement with someone in person before you buy.</p>
+        <ul class="contact-list">
+          <li><i class="bi bi-geo-alt"></i> 14 Bypass Road, Rajapalayam, Tamil Nadu</li>
+          <li><i class="bi bi-telephone"></i> +91 98765 43210</li>
+          <li><i class="bi bi-envelope"></i> care@arctura.example</li>
+          <li><i class="bi bi-clock"></i> 9:30 AM – 8:30 PM, all days</li>
+        </ul>
+        <div class="d-flex gap-2 mt-3 social-row">
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="map-placeholder">
+          <i class="bi bi-map"></i>
+          <span>Map preview — connect a maps embed here</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-3 col-6">
+        <span class="brand-word footer-brand">ARCTURA</span>
+        <p class="text-muted small mt-2">Engineered cooling for Indian homes. Sold, installed and serviced end to end.</p>
+      </div>
+      <div class="col-lg-3 col-6">
+        <h6>Shop</h6>
+        <a href="#">Split AC</a><a href="#">Window AC</a><a href="#">Portable AC</a><a href="#">Refrigerators</a>
+      </div>
+      <div class="col-lg-3 col-6">
+        <h6>Support</h6>
+        <a href="#">Track order</a><a href="#">Warranty claim</a><a href="#">Installation status</a><a href="#">Returns</a>
+      </div>
+      <div class="col-lg-3 col-6">
+        <h6>Company</h6>
+        <a href="#">About</a><a href="#">Stores</a><a href="#">Careers</a><a href="#">Contact</a>
+      </div>
+    </div>
+    <hr>
+    <div class="d-flex flex-wrap justify-content-between align-items-center small text-muted py-2">
+      <span>© 2026 Arctura Appliances Pvt. Ltd. All rights reserved.</span>
+      <span>Prototype for demonstration only — not a live store.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top / FAB -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+<a href="#" class="fab-whatsapp" aria-label="Chat with us"><i class="bi bi-chat-dots-fill"></i></a>
+
+<!-- Quick View Modal -->
+<div class="modal fade" id="quickViewModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content quick-view-content" id="quickViewBody">
+      <!-- injected -->
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="appToast" class="toast align-items-center" role="alert">
+    <div class="d-flex">
+      <div class="toast-body" id="toastBody">Done.</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
